@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toy World - Amazing Toys for Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 3em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .tagline {
+            color: white;
+            font-size: 1.3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav li {
+            display: inline-block;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: white;
+            background: #ff6b6b;
+            transform: scale(1.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero-banner {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+            background-size: cover;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 5px dashed #feca57;
+        }
+
+        .hero-banner h2 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero-banner p {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 20px;
+            margin: 20px auto;
+            background: linear-gradient(45deg, #ff9ff3, #48dbfb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            margin: 50px 0 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #feca57;
+            border-radius: 2px;
+        }
+
+        /* Toy Grid */
+        .toys-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .toy-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .toy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .toy-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 5px solid #feca57;
+        }
+
+        .toy-info {
+            padding: 25px;
+        }
+
+        .toy-info h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .toy-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .price {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: linear-gradient(90deg, #feca57, #ff6b6b);
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 50px 0;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-bottom: 5px solid #48dbfb;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .video-info p {
+            color: #666;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .category-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 150px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .category-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .category-box h4 {
+            color: #764ba2;
+            font-size: 1.2em;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #764ba2;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #48dbfb, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .contact-icon {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0,0,0,0.9);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #764ba2;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            background: #feca57;
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .tagline {
+                font-size: 1.1em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 8px 15px;
+                font-size: 1em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .hero-banner h2 {
+                font-size: 1.8em;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories {
+                gap: 10px;
+            }
+            
+            .category-box {
+                width: 120px;
+                padding: 15px;
+            }
+            
+            .hero-image, .about-image {
+                height: 200px;
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>🎮 TOY WORLD 🧸</h1>
+        <p class="tagline">Where Dreams Come to Play!</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#toys">Toys</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero-banner">
+            <h2>Welcome to the Ultimate Toy Store!</h2>
+            <p>Discover the most exciting toys for kids of all ages. From educational toys to fun games, we have something for every child!</p>
+            <div class="hero-image">
+                🎁 TOY PARADISE 🎪
+            </div>
+            <a href="#toys" class="btn">Explore Toys</a>
+        </section>
+
+        <!-- Categories Section -->
+        <h2 class="section-title" id="categories">🎯 Toy Categories 🎯</h2>
+        <div class="categories">
+            <div class="category-box">
+                <div class="category-icon">🧩</div>
+                <h4>Building Blocks</h4>
+            </div>
+            <div class="category-box">
+                <div class="category-icon">🚗</div>
+                <h4>Vehicles</h4>
+            </div>
+            <div class="category-box">
+                <div class="category-icon">🧸</div>
+                <h4>Stuffed Toys</h4>
+            </div>
+            <div class="category-box">
+                <div class="category-icon">🎮</div>
+                <h4>Electronic</h4>
+            </div>
+            <div class="category-box">
+                <div class="category-icon">🎨</div>
+                <h4>Creative Arts</h4>
+            </div>
+            <div class="category-box">
+                <div class="category-icon">🧠</div>
+                <h4>Educational</h4>
+            </div>
+        </div>
+
+        <!-- Featured Toys -->
+        <h2 class="section-title" id="toys">🌟 Featured Toys 🌟</h2>
+        <div class="toys-grid">
+            <!-- Toy 1 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #ff9ff3, #feca57); display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 1.5em; font-weight: bold;">
+                    🧩 LEGO SET
+                </div>
+                <div class="toy-info">
+                    <h3>LEGO Building Blocks</h3>
+                    <p>Build amazing creations with these colorful LEGO blocks. Perfect for creative minds!</p>
+                    <div class="price">$49.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 2 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #48dbfb, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🧸 TEDDY BEAR
+                </div>
+                <div class="toy-info">
+                    <h3>Cuddly Teddy Bear</h3>
+                    <p>Soft and huggable teddy bear, the perfect companion for bedtime stories!</p>
+                    <div class="price">$24.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 3 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #feca57, #48dbfb); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🚗 RC CAR
+                </div>
+                <div class="toy-info">
+                    <h3>Remote Control Car</h3>
+                    <p>High-speed RC car with amazing control and durability. Race time!</p>
+                    <div class="price">$79.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 4 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #ff6b6b, #ff9ff3); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🏠 DOLL HOUSE
+                </div>
+                <div class="toy-info">
+                    <h3>Dream Doll House</h3>
+                    <p>Beautiful multi-story dollhouse with furniture and accessories included.</p>
+                    <div class="price">$129.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 5 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #764ba2, #feca57); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🦸 ACTION FIGURE
+                </div>
+                <div class="toy-info">
+                    <h3>Superhero Action Figure</h3>
+                    <p>Collect your favorite superheroes! Poseable and highly detailed figures.</p>
+                    <div class="price">$34.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 6 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #48dbfb, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🧩 PUZZLE
+                </div>
+                <div class="toy-info">
+                    <h3>Educational Puzzle Set</h3>
+                    <p>Fun and challenging puzzles that help develop problem-solving skills.</p>
+                    <div class="price">$19.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 7 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #ff9ff3, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🎲 BOARD GAME
+                </div>
+                <div class="toy-info">
+                    <h3>Family Board Game</h3>
+                    <p>Exciting board game for the whole family. Hours of entertainment!</p>
+                    <div class="price">$39.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #ff6b6b, #ff9ff3); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🎨 Creative Arts
+                </div>
+                <div class="toy-info">
+                    <h3>Creative Arts</h3>
+                    <p>Beautiful creative arts furniture and accessories included.</p>
+                    <div class="price">$129.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Toy 8 -->
+            <div class="toy-card">
+                <div class="toy-image" style="background: linear-gradient(45deg, #feca57, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em; font-weight: bold;">
+                    🤖 ROBOT
+                </div>
+                <div class="toy-info">
+                    <h3>Interactive Robot</h3>
+                    <p>Smart robot toy with voice commands and programmable actions!</p>
+                    <div class="price">$89.99</div>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- Video Section -->
+        <h2 class="section-title" id="videos">🎬 Toy Review Videos 🎬</h2>
+        <div class="video-section">
+            <div class="videos-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Using YouTube embed with working video -->
+                        <iframe src="https://www.youtube.com/embed/WNcrrwQwskw?rel=0" 
+                                title="LEGO Building Fun" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>LEGO Building Fun</h3>
+                        <p>Watch amazing LEGO creations come to life with our special building sets!</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/JzqumbhfxRo?rel=0" 
+                                title="Top Toys Review" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Top Toys Review</h3>
+                        <p>Check out the hottest toys of the season in our comprehensive review!</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/JzqumbhfxRo?rel=0" 
+                                title="Top Toys Review" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>RC Cars Racing</h3>
+                        <p>Epic remote control car races and stunts with our latest RC models!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About Toy World</h3>
+                    <p>Welcome to Toy World, your ultimate destination for fun and educational toys! Since 2024, we've been bringing joy to children and families with our carefully curated selection of toys.</p>
+                    <p>Our mission is to provide high-quality, safe, and engaging toys that spark creativity and imagination in children of all ages.</p>
+                    <p>From classic toys to the latest innovations, we ensure every product meets our strict standards for quality and safety.</p>
+                </div>
+                <div class="about-image">
+                    🎪 OUR STORY 📚
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title" style="color: #764ba2; margin-top: 0;">📞 Contact Us 📞</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Visit Our Store</h4>
+                    <p>123 Toy Street<br>Fun City, FC 12345</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>Call Us</h4>
+                    <p>(123) 456-7890<br>Mon-Sat: 9AM-7PM</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email Us</h4>
+                    <p>info@toyworld.com<br>support@toyworld.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <h4>Store Hours</h4>
+                    <p>Monday-Friday: 10AM-8PM<br>Saturday-Sunday: 9AM-9PM</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="#contact" class="btn" style="width: auto; padding: 15px 50px;">Get Directions</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🎮 TOY WORLD 🧸</div>
+            <p>Making Childhood Magical Since 2024</p>
+            <p>Follow us on social media for the latest toy releases!</p>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon">📘</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">🐦</a>
+                <a href="#" class="social-icon">📺</a>
+                <a href="#" class="social-icon">📱</a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 Toy World. All rights reserved.</p>
+                <p>Designed with ❤️ for kids everywhere</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
