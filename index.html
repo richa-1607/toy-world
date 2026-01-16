@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Comic Sans MS',  sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             line-height: 1.6;
@@ -57,17 +57,9 @@
             z-index: 100;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+       
 
-        nav li {
-            display: inline-block;
-        }
+       
 
         nav a {
             text-decoration: none;
@@ -78,6 +70,11 @@
             padding: 8px 20px;
             border-radius: 25px;
             display: inline-block;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px
         }
 
         nav a:hover {
@@ -453,14 +450,12 @@
                 font-size: 1.1em;
             }
             
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
+           
             nav a {
                 padding: 8px 15px;
                 font-size: 1em;
+                flex-direction: column;
+                gap: 10px;
             }
             
             .section-title {
@@ -518,14 +513,14 @@
 
     <!-- Navigation -->
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#toys">Toys</a></li>
-            <li><a href="#videos">Videos</a></li>
-            <li><a href="#categories">Categories</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        
+            <a href="#home">Home</a></li>
+            <a href="#toys">Toys</a></li>
+            <a href="#videos">Videos</a></li>
+            <a href="#categories">Categories</a></li>
+            <a href="#about">About</a></li>
+            <a href="#contact">Contact</a></li>
+       
     </nav>
 
     <!-- Main Content -->
@@ -811,3 +806,4 @@
     </footer>
 </body>
 </html>
+
